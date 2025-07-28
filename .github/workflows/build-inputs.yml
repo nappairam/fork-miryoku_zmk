@@ -7,15 +7,16 @@ on:
     inputs:
       board:
         description: 'board'
-        required: true
+        required: false
+        default: 'nrf52840dongle/nrf52840'
       shield:
         description: 'shield'
         required: false
-        default: 'default'
+        default: 'totem_dongle'
       alphas:
         description: 'alphas'
         required: false
-        default: 'default'
+        default: 'QWERTY'
         type: choice
         options:
         - "default"
@@ -31,7 +32,7 @@ on:
       nav:
         description: 'nav'
         required: false
-        default: 'default'
+        default: 'vi'
         type: choice
         options:
         - "default"
