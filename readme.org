@@ -1,6 +1,20 @@
 # Copyright 2023 Manna Harbour
 # https://github.com/manna-harbour/miryoku
 
+* Flashing with nrfutil (OpenDFU Bootloader)
+
+For dongles with OpenDFU bootloader (e.g. nRF52840 Dongle PCA10059), use the =.hex= file from the build artifacts.
+
+#+begin_src sh
+# Generate DFU package from hex file
+nrfutil pkg generate --hw-version 52 --sd-req 0x00 --application zmk.hex --application-version 1 firmware.zip
+
+# Put dongle in DFU mode (press the reset button), then flash
+sudo nrfutil dfu usb-serial -pkg firmware.zip -p /dev/ttyACM0
+#+end_src
+
+To reset the dongle without entering DFU mode, unplug and replug USB instead of pressing the reset button.
+
 * Miryoku ZMK [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/logos/miryoku-roa-32.png]]
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/cover/miryoku-kle-cover-miryoku_zmk.png]]
