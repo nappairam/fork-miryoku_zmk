@@ -155,7 +155,7 @@ jobs:
             modules="${{ matrix.modules }}"
           fi
 
-          run_name=`echo $run_name | tr ' ' '-'`
+          run_name=`echo $run_name | tr ' /' '-'`
           echo "run_name=$run_name" >> $GITHUB_OUTPUT
 
           echo "::endgroup::"
@@ -362,7 +362,6 @@ jobs:
             if [ -f "$file" ]
             then
               cp "$file" "${{ steps.main.outputs.artifact_dir }}"
-              test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' || break
             fi
           done
           test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && cp "${GITHUB_WORKSPACE}/zmk/app/build/zephyr/.config" "${{ steps.main.outputs.artifact_dir }}"
